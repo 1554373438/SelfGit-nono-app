@@ -1,0 +1,113 @@
+<ion-view view-title="投资记录" id="records_list">
+  <ion-content scroll="false">
+    <scroll-x>
+      <div class="row row-no-padding scroll-tabs">
+        <div class="col-33" ng-class="{active:list.sliderIndex==$index}" ng-click="list.sliderIndex=$index" ng-repeat="tab in list.sliderTabs">{{tab}}</div>
+      </div>
+    </scroll-x>
+    <ion-slides slider="data.slider">
+      <ion-slide-page class="plan">
+        <div class="empty" ng-if="list.planList.length == 0">
+          <img src="assets/images/err_empty.png" alt="" style="width:96px;">
+          <p class="font-16 light-grey dbl-padding-top dbl-margin-top">暂无内容</p>
+        </div>
+        <div class="top-line" ng-if="list.planList.length != 0">共{{::list.investRecordNum}}笔</div>
+        <ion-scroll ng-if="list.planList.length != 0">
+          <div class="item item-borderless" ng-repeat="item in list.planList track by item.fp_id" ng-class="{end: item.status != 0}" ng-click="list.detailPlan($index)">
+            <div class="row title">
+              <div class="col">{{item.title}}&nbsp;&nbsp;<small class="gray" ng-if="item.type == 8">(持有{{item.holdDay}}天)</small></div>
+              <!-- <div class="col text-right small positive">{{+item.status?'已结束':'持有中'}}&nbsp;&gt;</div> -->
+              <div class="col text-right small positive" ng-if="+item.status == 0">持有中&nbsp;&gt;</div>
+              <div class="col text-right small positive" ng-if="+item.status == 2">已结束&nbsp;&gt;</div>
+              <div class="col text-right small positive" ng-if="+item.status == 1"><span class="del">退出中</span>&nbsp;&gt;</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">到期日期</div>
+              <div class="col text-right">{{item.endDate}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">已获/预期收益(元)</div>
+              <div class="col text-right assertive">{{item.earnings|currency:''}}/{{item.expectEarnings|currency:''}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">投资金额</div>
+              <div class="col text-right assertive">{{item.amount|currency:''}}元</div>
+            </div>
+          </div>
+          <ion-infinite-scroll ng-if="list.hasMoreDataPlan" on-infinite="list.loadMorePlan()" distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+
+      <ion-slide-page class="direct">
+        <div class="empty" ng-if="list.recordDirectList.length == 0">
+          <img src="assets/images/err_empty.png" alt="" style="width:96px;">
+          <p class="font-16 light-grey dbl-padding-top dbl-margin-top">暂无内容</p>
+        </div>
+        <div class="top-line" ng-if="list.recordDirectList.length != 0">共{{::list.RecordDirectTotal}}笔</div>
+        <ion-scroll ng-if="list.recordDirectList.length != 0">
+          <div class="item item-borderless" ng-repeat="item in list.recordDirectList" ng-class="{end: item.status == 2}" ng-click="list.detailRecordDirect($index)">
+            <div class="row title">
+              <div class="col">{{item.name}}</div>
+              <!-- <div class="col text-right small positive">{{+item.status?'已结束':'持有中'}}&nbsp;&gt;</div> -->
+              <div class="col text-right small positive" ng-if="item.status == 0"><span class="del">待满标</span>&nbsp;&gt;</div>
+              <div class="col text-right small positive" ng-if="item.status == 1">持有中&nbsp;&gt;</div>
+              <div class="col text-right small gray" ng-if="item.status == 2">已结束&nbsp;&gt;</div>
+              <div class="col text-right small gray" ng-if="item.status == 3">已流标&nbsp;&gt;</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">到期日期</div>
+              <div class="col text-right">{{item.endTime}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">投资金额(元)</div>
+              <div class="col text-right">{{item.price_in|currency:''}}元</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">历史年化收益率</div>
+              <div class="col text-right">{{item.rate}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">已获/待收收益(元)</div>
+              <div class="col text-right assertive">{{item.receiveInterest|currency:''}}/{{item.dueInterest|currency:''}}</div>
+            </div>
+          </div>
+          <ion-infinite-scroll ng-if="list.hasMoreDataRecordDirect" on-infinite="list.loadRecordDirect()"  distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+
+      <ion-slide-page>
+        <div class="empty" ng-if="list.myDebtList.length == 0">
+          <img src="assets/images/err_empty.png" alt="" style="width:96px;">
+          <p class="font-16 light-grey dbl-padding-top dbl-margin-top">暂无内容</p>
+        </div>
+        <div class="top-line" ng-if="list.myDebtList.length != 0">共{{::list.myDebtTotal}}笔</div>
+        <ion-scroll ng-if="list.myDebtList.length != 0">
+          <div class="item item-borderless" ng-repeat="item in list.myDebtList" ng-class="{end: +item.status}" ng-click="list.detailDebt($index)">
+            <div class="row title">
+              <div class="col">{{item.title}}</div>
+              <div class="col text-right small positive">{{+item.status?'已结束':'持有中'}}&nbsp;&gt;</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">到期日期</div>
+              <div class="col text-right">{{item.endDate}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">已获/预期收益(元)</div>
+              <div class="col text-right assertive">{{item.earnings|currency:''}}/{{item.expectEarnings|currency:''}}</div>
+            </div>
+            <div class="row">
+              <div class="col gray small">投资金额</div>
+              <div class="col text-right assertive">{{item.amount|currency:''}}元</div>
+            </div>
+          </div>
+          <ion-infinite-scroll ng-if="list.hasMoreDataDebt" on-infinite="list.loadMydebt()" distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+
+    </ion-slides>
+  </ion-content>
+</ion-view>

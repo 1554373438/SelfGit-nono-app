@@ -1,0 +1,17 @@
+.progress-wrapper {
+  background-color: #9B9B9B;
+  height: 2px;
+  width: 100%;
+  .progress {
+    height: 2px;
+   background: -webkit-linear-gradient(left, #3CD1E7, #399BF7);
+  }
+}
+
+.progress-percent {
+  width: auto;
+  padding-left: 10px;
+  margin-top: -10px;
+  font-size: 100%;
+  transform: scale(.8);
+}

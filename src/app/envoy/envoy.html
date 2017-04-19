@@ -1,0 +1,98 @@
+<ion-view view-title="镑客大使" id="envoy_view">
+  <ion-content class="has-footer" ng-cloak>
+    <img src="assets/images/envoy/banner.jpg" id="banner">
+    <section class="dbl-margin-horizontal">
+      <div class="section-title"><span>我的奖励</span></div>
+      <div class="ticket">
+        <img src="assets/images/envoy/ticket_cash.png" class="full-width">
+        <div class="content">
+          <div class="row row-center">
+            <div class="left text-center dark">好友投资
+              <br>(1年内)</div>
+            <div class="assertive col"><span class="font-40">1</span>%年化本金返利</div>
+          </div>
+          <div class="row row-center padding-horizontal row-no-padding">
+            <div class="col-60 small">累计奖励<span class="assertive font-16">￥{{envoy.info.earnings}}</span></div>
+            <span class="col-40 text-right" ng-click="envoy.goRewardDetail()">详情&gt;&gt;</span>
+          </div>
+        </div>
+      </div>
+      <div class="ticket margin-top">
+        <img src="assets/images/envoy/ticket_jx.png" class="full-width">
+        <div class="content">
+          <div class="row row-center row-no-padding">
+            <div class="left text-center dark">好友首投
+              <br>满￥3,000</div>
+            <div class="col margin-top">
+              <div class="assertive"><span class=" font-40">0.3</span>%加息券</div>
+              <span class="gray small">10000元起投，限贴心计划3-24月期</span>
+            </div>
+          </div>
+          <div class="row row-center padding-horizontal row-no-padding">
+            <div class="col text-right" ng-click="envoy.goMyBonus()">我的加息券&gt;&gt;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="dbl-margin-horizontal">
+      <div class="section-title"><span>好友奖励</span></div>
+      <div class="ticket">
+        <img src="assets/images/envoy/bg_668.png" class="full-width">
+        <div class="content row row-center text-center">
+          <div class="col">
+            <i class="icon-cash"><img src="assets/images/envoy/icon_cash.png" width="69"></i>
+            <p class="font-16"><span class="assertive">668元</span>现金券</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="dbl-margin-horizontal margin-top" id="activity">
+      <div class="ticket ticket-tq-box">
+        <div class="relative">
+          <img src="assets/images/envoy/ticket_tq_top.png" class="full-width">
+          <div class="content">
+            <div class="row row-center">
+              <div class="col text-center">
+                <i><img src="assets/images/envoy/icon_bonus.png" width="75"></i>
+                <div class="font-16">特权本金<span class="assertive font-20">&nbsp;41,800元&nbsp;</span>礼包</div>
+                <span class="gray">拼手气 10人瓜分</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative" ng-if="envoy.info.haveRedPacket">
+          <img src="assets/images/envoy/ticket_tq_bot.png" class="full-width">
+          <div class="content">
+            <div class="row row-center row-no-padding dbl-padding-horizontal row-last">
+              <div class="col small">
+                <div>余额：<span>{{envoy.info.redPacket.remainingBalance || 0}}</span>/41800元</div>
+                <div>有效期：至<span>{{envoy.info.redPacket.invalidDate}}</span></div>
+              </div>
+              <div class="button-record" ui-sref="envoy:record({balance: envoy.info.shareBalance, haveRedPacket: envoy.info.haveRedPacket})">领取记录</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rule-box">
+        <h5>如何发礼包？</h5>
+        <ul>
+          <li>2017.04.18前，单笔投资金额 ≥ 5000元(3月期及以上期限、计划类产品），可获得41800元特权本金礼包</li>
+          <li>2017.04.18(含)后，当礼包余额为0时、单笔投资金额 ≥5000元(3月期及以上期限、计划类产品），可获得41800元特权本金礼包</li>
+          <li>邀请好友即可发放礼包</li>
+        </ul>
+        <h5>如何领红包？</h5>
+        <ul>
+          <li>好友注册成功后可领取随机金额特权本金，共10名</li>
+          <li>好友领取红包后30天内投资(不含诺诺盈、债转)可激活特权本金</li>
+          <li>特权本金激活后按年化利率8.8%计活动收益，连续计算7天</li>
+        </ul>
+      </div>
+    </section>
+    <div class="positive text-center margin-top" ng-click="envoy.getMore()">了解更多规则&gt;&gt;</div>
+  </ion-content>
+  <div class="bar bar-footer dbl-padding-horizontal">
+    <button class="button button-block button-positive" ng-click="envoy.invite()">
+      <span class="font-18">邀请好友</span>
+    </button>
+  </div>
+</ion-view>

@@ -1,0 +1,12 @@
+{
+  "name": "angular-qs",
+  "version": "0.1.2",
+  "description": "Angular Service for qs ",
+  "main": "index.js",
+  "keywords": [
+    "angular",
+    "qs"
+  ],
+  "author": "Hom Yan",
+  "license": "MIT"
+}

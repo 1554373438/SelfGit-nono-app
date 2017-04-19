@@ -1,0 +1,36 @@
+#earnings{
+  .donut-wrapper{
+    padding-top: 0;
+    donut{
+      margin: 35px 0;
+    }
+  }
+
+  donut svg{
+    transition: height .5s ease;
+  }
+  .small donut svg{
+    height: 75px;
+  }
+  background: $light;
+  .item{
+    padding: 10px 40px 10px 22px;
+    font-size: 12px;
+    svg{
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .item-note{
+      font-size: 12px;
+    }
+  }
+  .detail-list .list{
+    margin: 0;
+  }
+  ion-scroll{
+    position: absolute;
+    width: 100%;
+    top: 185px;
+    bottom: 0;
+  }
+}

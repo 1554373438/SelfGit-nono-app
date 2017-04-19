@@ -1,0 +1,11 @@
+{
+  "name": "img-http-src",
+  "version": "0.2.5",
+  "description": "",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
+  }
+}

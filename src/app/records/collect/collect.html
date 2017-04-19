@@ -1,0 +1,16 @@
+<ion-view view-title="收款明细" id="collect">
+  <ion-content>
+    <div class="item item-text-wrap item-borderless" ng-repeat="item in collect.planList track by $index">
+      <div class="row">
+        <div class="col">第{{item.term}}期</div>
+        <div class="col text-right small" ng-class="{assertive:+item.is_pay}">{{item.price|currency:''}}元</div>
+      </div>
+      <div class="row small gray">
+        <div class="col">{{item.plan_time}}</div>
+        <div class="col text-right" ng-class="{assertive:+item.is_pay}">{{+item.is_pay?'已收款':'待收款'}}</div>
+      </div>
+    </div>
+    <ion-infinite-scroll ng-if="collect.hasMoreData" on-infinite="collect.loadMore()" spinner="bubbles" immediate-check="false" distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

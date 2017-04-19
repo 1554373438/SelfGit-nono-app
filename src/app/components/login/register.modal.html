@@ -1,0 +1,36 @@
+<ion-modal-view id="login_modal">
+  <ion-content>
+    <i class="icon ion-android-close" ng-click="fn.close()"></i>
+    <section class="login-form">
+      <form name="regForm" >
+        <div class="list">
+          <div class="item item-input item-borderless">
+            <input type="tel" placeholder="请输入手机号" ng-model="user.username" maxlength="11" required >
+          </div>
+          <div class="item item-input item-borderless item-icon-right">
+            <input type="text" placeholder="请输入图形验证码" ng-model="user.imgCode" maxlength="4" required>
+            <img ng-src="{{imgCode}}" class="img-code" ng-click="fn.refreshImgCode()" alt="imgCode">
+          </div>
+          <div class="item item-input item-borderless item-icon-right">
+            <input type="tel" placeholder="请输入短信验证码" ng-model="user.smsCode" maxlength="4" required>
+            <button class="button button-positive button-vcode" ng-click="fn.sendRegSmsCode()" ng-disabled="countdown">{{countdown?countdown:'获取验证码'}}</button>
+          </div>
+          <div class="item item-input item-borderless">
+            <input type="text" placeholder="请输入邀请码（选填）" ng-model="user.inviteCode" maxlength="10">
+          </div>
+          <div class="item item-input item-borderless item-icon-right">
+            <input type="{{show?'text':'password'}}" placeholder="请输入6-16位数字、字母组成的密码" ng-model="user.pwd" maxlength="16" required>
+            <i class="icon ion-eye light" ng-class="{'ion-eye': show, 'ion-eye-disabled': !show}" ng-click="show=!show"></i>
+          </div>
+        </div>
+
+        <button class="button button-light button-block" ng-disabled="regForm.$invalid" ng-click="fn.doRegister()">注册</button>
+     
+        <div class="text-center small padding-top">
+          <span class="light">我有账户马上</span><span class="energized" ng-click="fn.goLogin()">登录 ></span>
+        </div>
+      </form>
+    </section>
+    
+  </ion-content>
+</ion-modal-view>

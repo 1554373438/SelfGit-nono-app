@@ -1,0 +1,101 @@
+<ion-view view-title="产品" id="product_view" hide-back-button="true" hide-nav-bar="true" cache-view="false">
+  <nono-tabs type="positive" ng-model="product.sliderIndex" tabs-top="true">
+    <nono-tab title="计划" value="0"></nono-tab>
+    <nono-tab title="散标" value="1"></nono-tab>
+    <nono-tab title="债转" value="2"></nono-tab>
+  </nono-tabs>
+  <ion-content>
+    <ion-refresher spinner="bubbles" pulling-icon="ion-ios-arrow-thin-down" pulling-text="下拉刷新" on-refresh="product.doRefresh(true)">
+    </ion-refresher>
+    <ion-slides options="options" slider="data.slider" showPager="false">
+      <ion-slide-page>
+        <div class="notice energized row row-no-padding">
+          <span class="label">特色投资:</span>
+          <div class="col desc">
+            <p ng-if="pproduct.dingtou.desc.length<=16"> {{::product.dingtou.desc}}</p>
+            <marquee ng-if="product.dingtou.desc.length>16">{{::product.dingtou.desc}}</marquee>
+          </div>
+        </div>
+        <ion-scroll>
+          <ion-list>
+            <product-list>
+              <product-item ng-repeat='p in product.dingtou.list' product="p" ng-click="product.goDetail($index)"></product-item>
+            </product-list>
+          </ion-list>
+          <ion-infinite-scroll ng-if="product.dingtou.hasMoreData" on-infinite="product.dingtou(true)" distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+      <ion-slide-page>
+        <div class="notice energized row row-no-padding">
+          <span class="label">投资特色:</span>
+          <div class="col desc">
+            <p ng-if="pproduct.zhitou.desc.length<=16"> {{::product.zhitou.desc}}</p>
+            <marquee ng-if="product.zhitou.desc.length>16">{{::product.zhitou.desc}}</marquee>
+          </div>
+        </div>
+        <ion-scroll>
+          <ion-list>
+            <product-list>
+              <product-item ng-repeat='p in product.zhitou.list' product="p" ng-click="product.goDetail($index)"></product-item>
+            </product-list>
+          </ion-list>
+          <ion-infinite-scroll ng-if="product.zhitou.hasMoreData" on-infinite="product.loadMore(true)" distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+      <ion-slide-page>
+        <div class="notice energized row row-no-padding">
+          <span class="label">投资特色:</span>
+          <div class="col desc">
+            <p ng-if="product.debt.desc.length<=16"> {{::product.debt.desc}}</p>
+            <marquee ng-if="product.debt.desc.length>16">{{::product.debt.desc}}</marquee>
+          </div>
+        </div>
+        <ion-scroll>
+          <ion-list>
+            <product-list>
+              <product-item ng-repeat='p in product.debt.list' product="p" ng-click="product.goDetail($index)"></product-item>
+            </product-list>
+          </ion-list>
+          <ion-infinite-scroll ng-if="product.debt.hasMoreData" on-infinite="product.loadMore(true)" distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+    </ion-slides>
+    <div class="empty" ng-show="product.noData">
+      <img src="assets/images/err_empty.png" alt="" width="96">
+      <p class="font-16 light-grey dbl-padding-top dbl-margin-top">暂无内容</p>
+    </div>
+    <div class="bg-default" ng-show="product.isLoading">
+      <img src="assets/images/product_default.png" alt="" class="full-width">
+    </div>
+  </ion-content>
+  <div id="float-box" class="positive" ng-click="product.modals()" ng-class="{'on':product.showToolBar, 'down': !product.showToolBar}">
+     筛选
+  </div>
+  <div class="box" ng-if="product.isModals">
+    <div class="bg">
+      <div class="modals">
+        <div class="flex padding">
+          <i class="icon ion-android-close font-18" ng-click="product.close()"></i>
+          <span ng-click="product.reset()" ng-class="{'light-positive':product.isClass}">重置</span>
+        </div>
+        <p class="font-16 light-grey dbl-margin-top padding-left">期限</p>
+        <div>
+          <div class="range" style="margin-right: 30px;">
+            <input type="range" min="1" max="{{product.rangeMax}}" ng-model="product.min" onchange="angular.element(this).scope().rangea(this)">
+          </div>
+          <div class="range" style="margin-top: -57px;margin-left: 30px">
+            <input type="range" min="1" max="{{product.rangeMax}}" ng-model="product.max" onchange="angular.element(this).scope().rangeb(this)">
+          </div>
+        </div>
+        <p class="font-16 light-grey padding-left dbl-margin-bottom">期限区间(月)<span class="qj margin-left"><i class="v1">{{product.min}}</i>-<i class="v2">{{product.max}}</i></span></p>
+        <div class="padding-left padding-right">
+          <button class="button button-block button-positive" ng-click="product.toView(true)">查看</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <bottom-nav-tabs active="1"></bottom-nav-tabs>
+</ion-view>

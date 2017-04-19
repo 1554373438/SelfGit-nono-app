@@ -1,0 +1,21 @@
+<div class="coupon-wrapper">
+  <div class="coupon row row-center" ng-class="{expired:info.isExpired,used:info.isUsed}">
+    <div class="amount col-center text-center">
+      <span ng-if="type=='interest'">
+        <span class="symbol">+</span>{{info.value|number:2}}<span class="symbol">%</span>
+      </span>
+      <span ng-if="type!='interest'">
+        <span class="symbol">￥</span>{{info.value|number}}
+      </span>
+    </div>
+    <div class="desc col">
+      <div class="title">{{info.name}}</div>
+      <div class="usage">
+        {{info.remark}} <br>
+        有效期至{{info.expireDate}}
+      </div>
+    </div>
+    <div class="type col-center text-center" ng-bind-html="info.type">
+    </div>
+  </div>
+</div>

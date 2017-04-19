@@ -1,0 +1,18 @@
+<ion-view view-title="我的资金" id="assets">
+  <ion-content>
+    <article class="donut-wrapper light-bg">
+      <donut data="assets.info"></donut>
+     
+      <ion-list>
+        <ion-item class="item-borderless" ng-repeat="item in assets.info.items">
+          <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="no-padding">
+            <rect x="0" y="0" width="12" height="12" fill="{{item.color}}" />
+          </svg>
+          <span class="label gray">{{item.name}}（元）</span>
+          <span class="item-note dark">{{item.amount|currency:''}}</span>
+        </ion-item>
+      </ion-list>
+
+    </article>
+  </ion-content>
+</ion-view>

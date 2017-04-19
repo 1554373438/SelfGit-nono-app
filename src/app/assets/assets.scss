@@ -1,0 +1,20 @@
+.donut-wrapper{
+  padding: 15% 0 10%;
+}
+
+#assets{
+  .list{
+    margin-top: 10%;
+  }
+  .item{
+    padding: 10px 20%;
+    font-size: 12px;
+    svg{
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .item-note{
+      font-size: 12px;
+    }
+  }
+}

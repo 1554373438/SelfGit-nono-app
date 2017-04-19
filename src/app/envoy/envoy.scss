@@ -1,0 +1,135 @@
+#envoy_view {
+  color: #616161;
+  .relative {
+    position: relative;
+  }
+
+  .font-40 {
+    font-size: 40px;
+  }
+  .font-16 {
+    font-size: 16px;
+  }
+  .font-18 {
+    font-size: 18px;
+  }
+  #banner {
+    width: 100%;
+    min-height: 120px;
+    background: #3389d9;
+  }
+  .section-title {
+    color: #616161;
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+    span {
+      position: relative;
+      padding: 0 10px;
+      background: #f4f4f4;
+      z-index: 2;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background: #e0e0e0;
+    }
+  }
+  .ticket {
+    position: relative;
+    min-height: 100px;
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      .row:first-child {
+        height: 65%;
+        .left {
+          width: 28%;
+        }
+        .col {
+          padding: 0 0 0 10px;
+        }
+      }
+      .row:last-child {
+        height: 30%;
+      }
+      .row + .row {
+        margin-top: 0;
+      }
+    }
+  }
+  .button-record {
+    width: 104px;
+    height: 32px;
+    line-height: 32px;
+    background: #eff8ff;
+    color: $positive;
+    text-align: center;
+  }
+  .rule-box {
+    padding: 20px;
+    background: #eee;
+    border: 1px solid #d9d9d9;
+    margin-top: -6px;
+    h5 {
+      color: #616161;
+    }
+   li {
+      position: relative;
+      font-size: 12px;
+      padding-left: 14px;
+      margin-bottom: 10px;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        background: #aaa;
+        border-radius: 50%;
+
+      }
+    }
+  }
+  .bar-footer {
+    height: 72px;
+  }
+  .has-footer.scroll-content{
+    bottom: 80px;
+  }
+
+  #activity {
+    position: relative;
+    &:after{
+      content: '';
+      width: 74px;
+      height: 27px;
+      position: absolute;
+      top: 12px;
+      left: -2px;
+      background: url(#{$img-path}envoy/activity_label.png) no-repeat;
+      background-size: 74px auto;
+    }
+  }
+  .ticket-tq-box {
+    .full-width {
+      display: block;
+    }
+    .col {
+      padding-left: 0;
+    }
+    .row {
+      height: 100%!important;
+    }
+  }
+
+ 
+}

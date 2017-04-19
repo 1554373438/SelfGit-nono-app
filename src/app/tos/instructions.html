@@ -1,0 +1,6 @@
+<ion-view view-title="{{::ins.title}}" id="instruction_view" class="rules">
+  <ion-content>
+    <article ng-include="ins.template" ng-if="ins.title != '诺诺镑客注册协议' "></article>
+    <article ng-bind-html="ins.template" ng-if="ins.title == '诺诺镑客注册协议' "></article>
+  </ion-content>
+</ion-view>

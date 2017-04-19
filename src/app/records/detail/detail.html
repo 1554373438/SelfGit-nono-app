@@ -1,0 +1,129 @@
+<ion-view view-title="投资详情" id="records_detail">
+  <ion-content ng-class="{'has-footer': detail.info.type==8}">
+    <div ng-if="detail.info.name == '诺诺盈' ">
+      <div class="item item-icon-right item-borderless" ng-click="detail.directProDetail()">
+        诺诺盈
+        <i class="icon ion-ios-arrow-right gray"></i>
+      </div>
+      <section class="item item-borderless padding-bottom">
+        <div class="row row-center">
+          <div class="name">当前状态</div>
+          <div class="col positive" ng-if="detail.info.status == 0">待满标</div>
+          <div class="col positive" ng-if="detail.info.status == 1">持有中</div>
+          <div class="col gray" ng-if="detail.info.status == 2">已结束</div>
+          <div class="col gray" ng-if="detail.info.status == 3">已流标</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">投资金额</div>
+          <div class="col amount">{{::detail.directDetail.price_in|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">预期收益</div>
+          <div class="col">{{::detail.directDetail.preIncome|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">历史年化</div>
+          <div class="col amount">{{::detail.directDetail.rate}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">已获收益</div>
+          <div class="col amount">{{::detail.directDetail.price_interest|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">投资期限</div>
+          <div class="col date">{{::detail.directDetail.bo_expect}}个月</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">到期时间</div>
+          <div class="col date">{{::detail.directDetail.endTime}}</div>
+        </div>
+      </section>
+      <section class="item item-borderless padding-bottom">
+        <header>成交时间</header>
+        <div class="row row-center no-padding success" ng-repeat="item in detail.directDetail.records">
+          <div class="col"><i></i>{{item.type}}
+            <br><span class="gray">{{item.time}}</span></div>
+          <div class="col text-right assertive small">{{item.amount|currency:''}}元</div>
+        </div>
+      </section>
+      <div class="item item-icon-right item-borderless" ng-click="detail.borProtocol()">
+        借款协议
+        <i class="icon ion-ios-arrow-right gray"></i>
+      </div>
+      <div class="item item-icon-right item-borderless" ui-sref="records:collect">
+        收款明细
+        <i class="icon ion-ios-arrow-right gray"></i>
+      </div>
+    </div>
+    <div ng-if="detail.info.name != '诺诺盈' ">
+      <section class="item item-borderless padding-bottom">
+        <header>{{::detail.info.title}}</header>
+        <div class="row row-center" ng-if="detail.info.type != 6">
+          <div class="name">当前状态</div>
+          <div class="col positive" ng-if="detail.info.status == 0">持有中</div>
+          <div class="col" ng-if="detail.info.status == 2">已结束</div>
+          <div class="col positive" ng-if="detail.info.status == 1">退出中</div>
+        </div>
+        <div class="row row-center" ng-if="detail.info.type == 6">
+          <div class="name">当前状态</div>
+          <div class="col" ng-class="{positive:!+detail.info.status,gray:+detail.info.stauts}">{{+detail.info.status?'已结束':'持有中'}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">订单金额</div>
+          <div class="col amount positive bold">{{::detail.info.amount|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">预期年华</div>
+          <div class="col">{{::detail.info.rateShow}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">预期收益</div>
+          <div class="col amount assertive bold">{{::detail.info.expectEarnings|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">已获收益</div>
+          <div class="col amount assertive bold">{{::detail.info.earnings|currency:''}}元</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">项目期限</div>
+          <div class="col date">{{::detail.info.expect}}{{+detail.info.expectUnit?'天':'个月'}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">到期时间</div>
+          <div class="col date">{{::detail.info.endDate}}</div>
+        </div>
+        <div class="row row-center">
+          <div class="name">项目来源</div>
+          <div class="col">{{::detail.info.planSource}}</div>
+        </div>
+      </section>
+      <section class="item item-borderless padding-bottom">
+        <header>投资时间</header>
+        <div class="row" ng-repeat="i in detail.info.investInfo">
+          <div class="col">{{i.createTime}}</div>
+          <div class="col text-right gray">金额 <span class="assertive bold">{{i.vfAmount|currency:''}}</span> 元</div>
+        </div>
+      </section>
+      <section class="item item-icon-right item-borderless" ui-sref="records:debtor">
+        债权列表
+        <i class="icon ion-ios-arrow-right gray"></i>
+      </section>
+      <div class="item item-borderless padding-vertical">
+        <p>相关协议</p>
+        <div ng-if="detail.info.type ==2 || detail.info.type ==1" ng-click="detail.showProtocol()">
+          <small class="row row-center item-text-wrap positive">《{{::detail.info.title}}协议书》</small>
+        </div>
+        <div ng-if="detail.info.type == 8" ng-click="detail.showProtocol()">
+          <small class="row row-center item-text-wrap positive">《月月升投资计划协议书》</small>
+        </div>
+        <div ng-if="detail.info.type == 6" ng-click="detail.showProtocol()">
+          <small class="row row-center item-text-wrap positive">《债权转让协议书》</small>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer" ng-if="detail.info.type == 8">
+    <!--  <button class="button button-positive button-block"  ng-click="detail.quitConfirm()"><span>{{+detail.info.quitEnable? '退出': detail.info.status|yysStatus}}</span></button> -->
+    <button class="button button-positive button-block" ng-click="detail.quitConfirm()" ng-disabled="(detail.info.status != 0) || (detail.info.quitEnable == 0)"><span>{{+detail.info.quitEnable ? (+detail.info.status ==2 ? '已结束' : (+detail.info.status == 1 ? '退出中' : '退出')) : '锁定期内不可退出'}}</span></button>
+  </div>
+</ion-view>

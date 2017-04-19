@@ -1,0 +1,19 @@
+#strategy_view{
+	.top-box{
+		
+		line-height: 0;
+		img {width: 100%;}
+		// .platform-cordova &{
+		// 	min-height: 212px;
+		// }
+		.bar.bar-positive{
+			background-color: #138df4;
+		}
+	}
+	.bar-positive-light {
+		background: #138df4;
+		&.has-tabs-top{ // hack tabs-top
+			top: 0;
+		}
+	}
+}

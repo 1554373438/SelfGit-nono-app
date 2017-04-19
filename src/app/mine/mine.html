@@ -1,0 +1,65 @@
+<ion-view view-title="我的" id="mine_view" hide-nav-bar="true">
+  <ion-content class="has-tabs">
+    <article class="info text-center white">
+      <section class="bar-positive bar bar-header" align-title="center">
+        <div class="buttons buttons-left">
+          <span class="left-buttons">
+            <button class="button button-clear" ui-sref="msg">
+              <i class="icon ion-ios-email"></i>
+            </button>
+          </span>
+        </div>
+        <div class="title title-center header-item" style="font-size: 13px;">你好，{{mine.user.realName||mine.user.mobileEncrypted}}</div><div class="buttons buttons-right">
+          <span class="right-buttons">
+            <button class="button button-clear" ui-sref="setting">
+              <i class="icon ion-ios-gear"></i>
+            </button>
+          </span>
+        </div>
+      </section>
+
+      <section class="info-content">
+        <div class="avatar inline-block padding-top" ui-sref="mall:level({number:mine.user.level})" level="{{mine.user.level}}">
+          <img ng-src="assets/images/mall/avatar_v{{mine.user.level}}@2x.png" width="48" alt="">
+        </div>
+        <div class="dbl-padding-top">
+          <small>累计收益（元）</small>
+        </div>
+        <h1 class="invite-code white" ui-sref="earnings">{{mine.account.earnings |currency:''}}</h1>
+        <div class="row padding-top">
+          <div class="col col-center" ui-sref="assets">
+            <div class="amount">{{mine.account.total |currency:''}}元</div>
+            <div><small>总资产</small></div>
+          </div>
+          <div class="col col-center" ui-sref="balance">
+            <div class="amount">{{mine.account.available |currency:''}}元</div>
+            <div><small>可用余额</small></div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="row row-no-padding cmds">
+      <div class="col light-bg" ng-click="mine.goTopup()">
+        <button class="button button-full button-clear button-positive no-margin">充值</button>
+      </div>
+      <div class="col light-bg" ng-click="mine.goWithdraw()">
+        <button class="button button-full button-clear button-stable no-margin">提现</button>
+      </div>
+    </div>
+    <div class="row row-no-padding row-wrap light-bg text-center">
+      <div class="col col-33 padding" ng-repeat="p in mine.pageList" ng-click="mine.goTo(p.state)">
+        <i class="sprite" ng-class="p.icon"></i>
+        <div><small>{{p.name}}</small></div>
+      </div>
+      <a class="col col-33 padding" href="tel:1010-0668">
+        <i class="sprite more" ng-class="kefu"></i>
+        <div><small>我的客服</small></div>
+      </a>
+
+    </div>
+  </ion-content>
+
+  <bottom-nav-tabs active="3"></bottom-nav-tabs>
+  
+</ion-view>

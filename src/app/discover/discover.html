@@ -1,0 +1,45 @@
+<ion-view view-title="发现" hide-back-button="true" id="discover_view">
+  <ion-content class="has-tabs">
+    <div class="item item-divider">综合中心</div>
+    <div class="row row-no-padding text-center row-wrap">
+      <a class="col col-33 col-center" ui-sref="mall({from:'discover'})">
+        <i class="sprite mall"></i>
+        <div class="padding">商城</div>
+      </a>
+      <a class="col col-33 col-center" ng-click="discover.gotoBBSLogin()">
+        <i class="sprite community"></i>
+        <div class="padding">社区</div>
+      </a>
+      <a class="col col-33 col-center" ui-sref="activity({from:'discover'})">
+        <i class="sprite activity"></i>
+        <div class="padding">活动</div>
+      </a>
+      <a class="col col-33 col-center" ui-sref="entertainment({from:'discover'})">
+      <i class="sprite entertainment"></i>
+        <div class="padding">娱乐</div>
+      </a>
+    </div>
+    <div class="item item-divider">了解诺诺</div>
+    <div class="row row-no-padding text-center row-wrap">
+      <a class="col col-33 col-center" ui-sref="about">
+        <i class="sprite about"></i>
+        <div class="padding">公司介绍</div>
+      </a>
+      <a class="col col-33 col-center" ui-sref="report">
+        <i class="sprite chart"></i>
+        <div class="padding">运营数据</div>
+      </a>
+      <a class="col col-33 col-center" ui-sref="strategy">
+        <i class="sprite book"></i>
+        <div class="padding">新手课堂</div>
+      </a>
+      <a class="col col-33 col-center" ui-sref="news">
+        <i class="sprite news"></i>
+        <div class="padding">公司新闻</div>
+      </a>
+    </div>
+  </ion-content>
+
+  <bottom-nav-tabs active="2"></bottom-nav-tabs>
+ 
+</ion-view>

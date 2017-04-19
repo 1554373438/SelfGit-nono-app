@@ -1,0 +1,236 @@
+#product_view {
+  .flex {
+    @include display-flex();
+    @include justify-content(space-between);
+  }
+
+  .light-grey {
+    color: #BDBDBD;
+  }
+  .light-positive {
+    color: $light-positive;
+  }
+  .font-12 {
+    font-size: 12px;
+  }
+  .font-18 {
+    font-size: 18px;
+  }
+  .margin-top-15 {
+    margin-top: 15px;
+  }
+  .margin-top-25 {
+    margin-top: 25px;
+  }
+  .tabs {
+    padding: 0 16px;
+  }
+  .tab-item-active {
+    border-color: #3388d9;
+  }
+  .absolute {
+    position: absolute
+  }
+  .has-top {
+    padding-top: 50px;
+  }
+  .ion-ios-arrow-right:before {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+  .title i {
+    border: 1px solid #E74C3C;
+    color: #E74C3C;
+    font-size: 12px;
+  }
+  .division:after {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 50px;
+    background: #ccc;
+    opacity: .56;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    right: 10%;
+  }
+
+  // 优化 动画
+  #float-box {
+    position: fixed;
+    z-index: 98;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: $pos-color;
+    line-height: 60px;
+    color: #fff;
+    right: 20px;
+    bottom: 60px;
+    transform: translate3d(0,200px,0);
+  }
+  .on {
+    animation: on .3s both infinite;
+    -webkit-animation: on .3s both linear;
+  }
+  .down {
+    animation: down .3s both infinite;
+    -webkit-animation: down .3s both linear;
+  }
+  @keyframes on {
+    from {
+      transform: translate3d(0,200px,0);
+    }
+    to {
+      transform: translate3d(0,0,0);
+    }
+  }
+  @-webkit-keyframes down {
+    from {
+      transform: translate3d(0,0px,0);
+    }
+    to {
+      transform: translate3d(0,200px,0);
+    }
+  }
+   // 优化 动画 end
+
+  .box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, .5);
+    z-index: 99;
+  }
+  .bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -100%;
+    z-index: 99;
+    animation: modals .3s both infinite;
+    -webkit-animation: modals .3s both linear;
+  }
+  .modals {
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    bottom: 0;
+    .flex {
+      border-bottom: 1px solid #ccc;
+      @include align-items(center);
+    }
+    .qj {
+      font-size: 24px;
+      color: #919191;
+    }
+    .btns {
+      width: 104px;
+      height: 32px;
+      border-radius: 2px;
+      background: #F5F5F5;
+      display: inline-block;
+      text-align: center;
+      line-height: 32px;
+      color: #757575;
+    }
+    .btns.current {
+      background: rgba(239, 248, 255, .8);
+      color: $light-positive;
+    }
+  }
+  @keyframes modals {
+    from {
+      bottom: -100%;
+    }
+    to {
+      bottom: 0px;
+    }
+  }
+  @-webkit-keyframes modals {
+    from {
+      bottom: -100%;
+    }
+    to {
+      bottom: 0px;
+    }
+  }
+  @keyframes modals-down {
+    from {
+      bottom: 0;
+    }
+    to {
+      bottom: -100%;
+    }
+  }
+  @-webkit-keyframes modals-down {
+    from {
+      bottom: 0;
+    }
+    to {
+      bottom: -100%;
+    }
+  }
+  .empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 100px;
+  }
+  // nono-tab start
+  .scroll-content {
+    margin-bottom: 50px;
+  }
+  .bg-default {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+  }
+  .nono-tabs.tabs-top + .scroll-content, nono-tabs + .scroll-content {
+    top: 49px;
+  }
+  .tabs-top > .tabs, .tabs.tabs-top {
+    top: 0;
+  }
+  .scroll {
+    height: 100%;
+  }
+  .swiper-slide {
+    height: 100%;
+  }
+  .scroll-view{
+    position: absolute;
+    width: 100%;
+    top: 44px;
+    bottom: 0;
+    height: auto;
+  }
+  product-item:last-child{
+    ion-item{
+      margin-bottom: 0;
+    }
+  }
+  .swiper-pagination {
+    display: none;
+  }
+  .notice {
+    padding: 0 10px;
+    height: 44px;
+    line-height: 44px;
+    background: #FFF9EF;
+    .label {
+      width: 65px;
+    }
+  }
+}

@@ -1,0 +1,148 @@
+#mine_view{
+  .bar.bar-positive{
+    background-color: transparent !important;
+  }
+  .bar-header .right-buttons .button{
+    font-size: 14px;
+  }
+  .info{
+    min-height: 230px;
+    .platform-cordova &{
+      min-height: 250px;
+      >header{
+        padding-top: 20px;
+      }
+      .info-content{
+        padding-top: 64px;
+      }
+    }
+    background: #0477E2 url($img-path + "mine/mine-bg.png") no-repeat;
+    background-size: cover;
+    >header{
+      line-height: 44px;
+      font-size: 17px;
+      font-weight: 500px;
+    }
+  }
+  .info-content{
+    padding-top: 44px;
+    .invite-code{
+      margin-top: 0;
+      font-size: 24px;
+    }
+    .row{
+      .amount{
+        font-size: 16px;
+        padding: 8px;
+        +div{
+          color: #BED8EC;
+        }
+      }
+      .col{
+        position: relative;
+      }
+      .col:first-child:after{
+        content: '';
+        width: 1px;
+        height: 30px;
+        background: $light;
+        opacity: .29;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -15px;
+      }
+    }
+  }
+
+  .avatar{
+    position: relative;
+    &:after{
+      content: '';
+      display: block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      background: $balanced;
+      border-radius: 13px;
+      font-size: 12px;
+      position: absolute;
+      bottom: 0px;
+      right: -10px;
+      transform: scale(.77);
+    }
+    &[level="0"]:after{
+      display: none;
+    },
+    &[level="1"]:after{
+      content: 'V1';
+    },
+    &[level="2"]:after{
+      content: 'V2';
+    }
+    &[level="3"]:after{
+      content: 'V3';
+    }
+  }
+
+
+  .sprite {
+    display: inline-block; 
+    width: 32px;
+    height: 32px;
+    overflow: hidden; 
+    background: url($img-path + "mine.png") no-repeat 50%;
+    background-size: 192px 32px;
+  }
+  .cap {background-position: 0 0}
+  .bcard {background-position: -32px 0}
+  .gift {background-position: -64px 0}
+  .more {background-position: -96px 0}
+  .pig {background-position: -128px 0}
+  .wallet {background-position: -160px 0}
+
+  .col.col-33{
+    color: inherit;
+    text-decoration: none;
+    padding: 24px 0;
+    &:not(:nth-child(3n)) {
+      border-right: solid 1px $border-color;
+    }
+    border-bottom: solid 1px $border-color;
+  }
+
+  .cmds{
+    margin: 16px 16px 20px;
+    width: auto;
+    border: solid 1px $border-color;
+    border-radius: 6px;
+    .col{
+      position: relative;
+    }
+    .col:first-child{
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+    .col:last-child{
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+    .col:not(:last-child):before{
+      content: '';
+      width: 1px;
+      height: 32px;
+      background: $border-color;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -16px;
+    }
+  }
+}
+
+.bar button.button-clear{
+  .icon.ion-ios-email:before,
+  .icon.ion-ios-gear:before{
+    font-size: 26px;
+  }
+}

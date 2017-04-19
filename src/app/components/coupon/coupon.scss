@@ -1,0 +1,74 @@
+.coupon-wrapper{
+  padding: 4px 8px;
+  &:first-child{
+    padding-top: 8px;
+  }
+  .coupon{
+    position: relative;
+    min-height: 96px;
+    background: $light url(#{$img-path}coupon-bg.svg) repeat-y;
+    background-size: 12px;
+    border-radius: 4px;
+    box-shadow: rgba(216,216,216,.5) 0 0 4px 0;
+    align-items: stretch;
+    &.expired,&.used{
+      .amount{
+        color: #b4b4b4;
+      }
+      .desc *{
+        color: #d2d2d2;
+      }
+      .type{
+        color: #eaeaea;
+      }
+    }
+    &.expired:after,&.used:after{
+      content: '';
+      display: block;
+      width: 100px;
+      height: 48px;
+      background: url(#{$img-path}expired.png) no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      right: 55px;
+      top: 50%;
+      margin-top: -24px; 
+    }
+    &.used:after{
+      background: url(#{$img-path}used.png) no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .amount{
+    width: 90px;
+    font-size: 24px;
+    color: $assertive;
+    .symbol{
+      font-family: Arial;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  .desc{
+    border-right: dashed 1px rgba(151,151,151,.2);
+    @include display-flex(); 
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    .title{
+      color: #1E1E1E;
+      font-family: Heiti SC;
+      font-weight: lighter;
+      padding-bottom: 6px;
+    }
+    .usage{
+      @extend .small, .gray;
+    }
+  }
+  .type{
+    width: 70px;
+    color: #97C7FF;
+    font-family: Hiragino Sans GB;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}

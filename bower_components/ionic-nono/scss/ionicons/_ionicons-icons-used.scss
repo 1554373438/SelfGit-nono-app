@@ -1,0 +1,53 @@
+// Ionicons Icons
+// --------------------------
+
+.ionicons,
+.#{$ionicons-prefix}android-arrow-dropdown:before,
+.#{$ionicons-prefix}android-arrow-dropup:before,
+.#{$ionicons-prefix}android-close:before,
+.#{$ionicons-prefix}android-share-alt:before,
+.#{$ionicons-prefix}arrow-down-b:before,
+.#{$ionicons-prefix}arrow-up-b:before,
+.#{$ionicons-prefix}eye:before,
+.#{$ionicons-prefix}eye-disabled:before,
+.#{$ionicons-prefix}ios-arrow-down:before,
+.#{$ionicons-prefix}ios-arrow-left:before,
+.#{$ionicons-prefix}ios-arrow-right:before,
+.#{$ionicons-prefix}ios-arrow-up:before,
+.#{$ionicons-prefix}ios-checkmark:before,
+.#{$ionicons-prefix}ios-circle-outline:before,
+.#{$ionicons-prefix}ios-clock-outline:before,
+.#{$ionicons-prefix}ios-email:before,
+.#{$ionicons-prefix}ios-gear:before,
+.#{$ionicons-prefix}ios-help:before,
+.#{$ionicons-prefix}ios-minus-empty:before,
+.#{$ionicons-prefix}ios-plus-empty:before,
+.#{$ionicons-prefix}minus:before,
+.#{$ionicons-prefix}plus:before,
+.#{$ionicons-prefix}social-yen-outline:before,
+{
+  @extend .ion;
+}
+.#{$ionicons-prefix}android-arrow-dropdown:before { content: $ionicon-var-android-arrow-dropdown; }
+.#{$ionicons-prefix}android-arrow-dropup:before { content: $ionicon-var-android-arrow-dropup; }
+.#{$ionicons-prefix}android-close:before { content: $ionicon-var-android-close; }
+.#{$ionicons-prefix}android-share-alt:before { content: $ionicon-var-android-share-alt; }
+.#{$ionicons-prefix}arrow-down-b:before { content: $ionicon-var-arrow-down-b; }
+.#{$ionicons-prefix}arrow-up-b:before { content: $ionicon-var-arrow-up-b; }
+.#{$ionicons-prefix}eye:before { content: $ionicon-var-eye; }
+.#{$ionicons-prefix}eye-disabled:before { content: $ionicon-var-eye-disabled; }
+.#{$ionicons-prefix}ios-arrow-down:before { content: $ionicon-var-ios-arrow-down; }
+.#{$ionicons-prefix}ios-arrow-left:before { content: $ionicon-var-ios-arrow-left; }
+.#{$ionicons-prefix}ios-arrow-right:before { content: $ionicon-var-ios-arrow-right; }
+.#{$ionicons-prefix}ios-arrow-up:before { content: $ionicon-var-ios-arrow-up; }
+.#{$ionicons-prefix}ios-checkmark:before { content: $ionicon-var-ios-checkmark; }
+.#{$ionicons-prefix}ios-circle-outline:before { content: $ionicon-var-ios-circle-outline; }
+.#{$ionicons-prefix}ios-clock-outline:before { content: $ionicon-var-ios-clock-outline; }
+.#{$ionicons-prefix}ios-email:before { content: $ionicon-var-ios-email; }
+.#{$ionicons-prefix}ios-gear:before { content: $ionicon-var-ios-gear; }
+.#{$ionicons-prefix}ios-help:before { content: $ionicon-var-ios-help; }
+.#{$ionicons-prefix}ios-minus-empty:before { content: $ionicon-var-ios-minus-empty; }
+.#{$ionicons-prefix}ios-plus-empty:before { content: $ionicon-var-ios-plus-empty; }
+.#{$ionicons-prefix}minus:before { content: $ionicon-var-minus; }
+.#{$ionicons-prefix}plus:before { content: $ionicon-var-plus; }
+.#{$ionicons-prefix}social-yen-outline:before { content: $ionicon-var-social-yen-outline; }

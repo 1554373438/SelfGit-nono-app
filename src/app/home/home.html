@@ -1,0 +1,95 @@
+<ion-view view-title="诺诺镑客" hide-back-button="true" id="home_view" hide-nav-bar="home.hideNavBar">
+  <div class="login-show small" ng-if="!home.user.sessionId" ui-sref="home:login">登录</div>
+  <ion-nav-buttons side="right">
+    <div class="login-show active positive small" ng-if="!home.user.sessionId" ui-sref="home:login">登录</div>
+  </ion-nav-buttons>
+  <ion-content class="has-tabs" delegate-handle="mainScroll">
+    <ion-refresher spinner="bubbles" pulling-icon="ion-ios-arrow-thin-down" pulling-text="下拉刷新" on-refresh="home.doRefresh()">
+    </ion-refresher>
+    <banner-scroll>
+      <ion-slides options="options" slider="data.slider" auto-play="true" class="banners">
+        <ion-slide-page ng-repeat="banner in home.banners track by banner.id">
+          <ion-item class="item-borderless no-padding no-margin" ng-click="home.bannerDetail($index)">
+            <img http-src="{{banner.path}}" placeholder="assets/images/home_banner.png" class="block">
+          </ion-item>
+        </ion-slide-page>
+      </ion-slides>
+    </banner-scroll>
+    <div class="row light-bg text-center no-padding-horizontal">
+      <a class="col col-25 padding-vertical no-padding-horizontal" ext-href="{{item.link}}" ext-name="{{item.name}}" ng-repeat="item in home.viceBanner track by item.id">
+        <img http-src="{{item.path}}" placeholder="assets/images/home-activity-icon.png" width="36">
+        <div class="text-ellipsis"><small>{{item.name}}</small></div>
+      </a>
+    </div>
+    <div class="light-bg text-center margin dbl-padding-vertical part1">
+      <p class="font-18">{{::home.hotRecommendOne.title}}</p>
+      <small class="energized">{{::home.hotRecommendOne.suffix}}</small>
+      <h1 class="assertive no-margin">{{::home.hotRecommendOne.rateShow}}</h1>
+      <div class="gray small">历史年化收益率</div>
+      <button class="button button-block button-positive " ng-click="home.hotDetail(0)">
+        <span>立即投资</span>
+      </button>
+      <div class="small">保障方式&nbsp;&nbsp;<span class="positive" ui-sref="nxy:plan">{{::home.hotRecommendOne.protectPlan}}</span></div>
+    </div>
+    <div ng-if="home.hotRecommendNew.length">
+      <h4 class="item item-divider item-borderless border-bottom light-bg">热门推荐</h4>
+      <div class="light-bg dbl-padding-left">
+        <div class="row hot-list " ng-repeat="item in home.hotRecommendNew" ng-click="home.hotDetail($index+1)">
+          <div class="col col-50 border-right">
+            <p class="assertive font-18 dbl-margin-bottom">{{item.rateShow}}</p>
+            <small class="small gray">历史年化收益率</small>
+          </div>
+          <div class="col col-50 suffix">
+            <p class="dbl-margin-bottom text-ellipsis">{{item.title}}<small class="assertive" ng-if="item.suffix">{{item.suffix}}</small></p>
+            <p class="small text-ellipsis">期限{{item.expect}}{{item.expectUnit}}｜起投{{item.priceMin | number: 0}}元</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="margin-vertical light-bg" ng-if="home.secondaryBanner" ext-href="{{home.secondaryBanner.link}}" ext-name="{{home.secondaryBanner.name}}">
+      <img class="full-width" ng-src="{{home.secondaryBanner.path}}" alt="">
+    </div>
+    <div ng-if="home.typeShows.length">
+      <div class="item item-divider item-borderless light-bg">大家都在投资</div>
+      <scroll-x class="light-bg scroll-list full-width dbl-padding-horizontal">
+        <div class="row row-no-padding">
+          <div class="typeitem text-center" ng-class="{active:list.sliderIndex==$index}" ng-repeat="item in home.typeShows" ng-click="home.typeShowDetail($index)">
+            <p class="dbl-padding-top">{{item.title}}</p>
+            <p class="assertive dbl-margin-vertical font-24">{{item.rateShow}}</p>
+            <p class="small dbl-margin-top">累计投资</p>
+            <p class="font-18">{{item.buyCount}}<span class="small">人</span></p>
+            <div class="margin-horizontal">
+              <button class="button button-block button-clear button-positive">查看</button>
+            </div>
+          </div>
+        </div>
+      </scroll-x>
+    </div>
+    <div ng-if="home.characterInvest.length">
+      <div class="item item-divider item-borderless light-bg">
+      特色投资
+      <span class="pull-right font-14" ui-sref="specInvest">更多&gt;</span>
+      </div>
+      <scroll-x class="light-bg scroll-list full-width dbl-padding-horizontal">
+        <div class="row row-no-padding">
+          <div class="typeitem text-left" ng-class="{active:list.sliderIndex==$index}" ng-repeat="item in home.characterInvest" ng-click="home.sepcInvestDetail($index)">
+            <img http-src="{{item.path}}" placeholder="assets/images/home_spec_banner.jpg" class="block full-width">
+            <div class="dbl-padding-horizontal padding-vertical">
+              <p>{{item.title}}</p>
+              <div class="small dark">
+                <div class="gray margin-bottom">商品价格：<span>{{item.productPrice}}</span>元</div>
+                <div><span>{{item.priceMin}}</span>元存入<span>{{item.expect}}{{item.expectUnit}}</span></div>
+                <div>白拿商品+<span>{{item.profit}}</span>元收益</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </scroll-x>
+    </div>
+    <div class="scroll-bottom">哎呀，露底了</div>
+  </ion-content>
+  <div id="toastr-tip" class="row row-center" ng-class="{active: home.tipInfo}">
+    <p class="no-margin">{{::home.tipInfo}}</p>
+  </div>
+  <bottom-nav-tabs active="0"></bottom-nav-tabs>
+</ion-view>

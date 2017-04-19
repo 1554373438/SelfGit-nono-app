@@ -1,0 +1,76 @@
+#records_detail{
+  // .scroll-content{
+  //   bottom:78px;
+  // }
+  .has-footer {
+    bottom: 78px;
+  }
+  .item{
+    margin-bottom: 4px;
+    header{
+      padding-bottom: 10px;
+      border-bottom: solid 1px #f4f4f4;
+      margin-bottom: 6px;
+    }
+    .row{
+      font-size: 12px;
+      padding-left: 0;
+      .col{
+        padding: 6px;
+      }
+    }
+    .amount{
+      font-size: 14px;
+    }
+  }
+  .info{
+    padding-bottom: 6px;
+  }
+  .name{
+    width: 70px;
+    color: $gray;
+  }
+  .success{
+    border-bottom:1px solid #f5f5f5;
+    i{
+      display: inline-block;
+      vertical-align: middle;
+      width: 14px;
+      height: 14px;
+      background: url(../assets/images/deal_in.png) no-repeat;
+      background-size: cover;
+      margin-right: 5px;
+    }
+  }
+}
+.record-popup {
+  .popup-head {
+    h3{
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+  }
+  .popup-body {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  .popup-buttons {
+    padding: 10px;
+    padding-top: 0;
+    border-top: none;
+    .button {
+      min-height:30px;
+      border:none;
+      border-radius:10px;
+      font-size:14px;
+      &:after{
+        display: none;
+      }
+    }
+    .button:first-child {
+      background-color: #f29108;
+    }
+     .button:last-child {
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<ion-view view-title="奖励详情" id="envoy_reward">
+  <ion-content class="text-center">
+    <section class="info-content white">
+      <div class="dbl-padding-top padding-bottom" id="new_reward">
+        <div class="row">
+          <div class="col col-50 division">
+            <span>已结算(元)</span>
+            <p>{{reward.info.payed || 0 |currency:''}}</p>
+          </div>
+          <div class="col col-50">
+            <span>预期待结算(元)<i class="icon ion-ios-help  icons ion-help-circled" ng-click="reward.showAlert()"></i></span>
+            <p>{{reward.info.total_expect_paid || 0 |currency:''}}</p>
+            <span class="today">今日<span>{{reward.info.daily_expect_paid || 0 |currency:''}}</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <article ng-if="reward.info.friendInvestRewards.length">
+      <section class="row small">
+        <div class="col">
+          注册好友(人) <span class="dbl-padding-left ">{{reward.info.registerNum}}</span>
+        </div>
+        <div class="col">
+          投资好友(人) <span class="dbl-padding-left ">{{reward.info.investNum}}</span>
+        </div>
+      </section>
+
+      <section class="light-bg">
+        <div class="row padding user-list">
+          <div class="col text-left">投资用户</div>
+          <div class="col">预期待结算(元)</div>
+          <div class="col">已结算(元)</div>
+        </div>
+        <div class="row padding small user-p" ng-repeat="u in reward.info.friendInvestRewards track by u.username">
+          <div class="col text-left">{{u.username}}</div>
+          <div class="col">{{u.investNotPay|currency:''}}</div>
+          <div class="col">{{u.investPayed|currency:''}}</div>
+        </div>
+      </section>
+    </article>
+
+    <article class="default row light-bg" ng-if="!reward.info.friendInvestRewards.length">
+      <div class="col col-center positive">
+        <img src="assets/images/envoy/nofriends.png" width="100" alt="" class="margin-bottom">
+        <div>暂无奖励记录</div>
+        <div>快去邀请好友</div>
+      </div>
+
+    </article>
+
+
+  </ion-content>
+</ion-view>

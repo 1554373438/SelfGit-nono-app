@@ -1,0 +1,99 @@
+#records_list {
+  scroll-x {
+    display: block;
+    width: 100%;
+    background: $light;
+  }
+  .scroll-tabs {
+    line-height: 60px;
+    text-align: center;
+    color: $dark;
+    margin-bottom: 4px;
+    * {
+      background: $light;
+    }
+    > .active {
+      position: relative;
+      z-index: 1;
+      color: $positive;
+      &:before {
+        content: '';
+        display: block;
+        background: $stable;
+        padding: 7px 14px;
+        border-radius: 30px;
+        min-width: 88px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -15px;
+        margin-left: -44px;
+        z-index: -1;
+      }
+    }
+  }
+  .top-line {
+    position: relative;
+    font-size: 12px;
+    height: 30px;
+    text-align: center;
+    color: $gray;
+    @include display-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    &:before,
+    &:after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      min-width: 20px;
+      height: 1px;
+      background: rgba(151, 151, 151, .2);
+      @include flex(1);
+      margin: 0 8%;
+    }
+  }
+  ion-slides {
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    height: auto;
+    .swiper-pagination {
+      display: none;
+    }
+  }
+  .scroll-view {
+    position: absolute;
+    width: 100%;
+    // height: auto;
+    top: 30px;
+    bottom: 0;
+  }
+  .item {
+    padding: 3px 16px;
+    margin-top: 0;
+    margin-bottom: 4px;
+   &.activated {
+    background-color: #fff;
+   }
+
+    &.end * {
+      color: $gray;
+      .del{
+        color:#3388d9;
+      }
+    }
+    .row {
+      padding: 0;
+    }
+    .title {
+      border-bottom: 2px dotted #E0E0E0;
+    }
+  }
+  .empty {
+    text-align: center;
+    margin-top: 100px;
+  }
+}

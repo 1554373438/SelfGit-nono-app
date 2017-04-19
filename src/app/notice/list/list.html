@@ -1,0 +1,43 @@
+<ion-view view-title="消息中心" class="msg-list">
+  <nono-tabs type="positive" ng-model="msg.sliderIndex" tabs-top="true">
+    <nono-tab title="公告资讯" value="0"></nono-tab>
+    <nono-tab title="系统消息" value="1"></nono-tab>
+  </nono-tabs>
+
+  <ion-content scroll="false">
+    <ion-slides options="options" slider="data.slider">
+      <ion-slide-page>
+        <ion-scroll>
+          <ion-list>
+            <ion-item class="item-borderless item-icon-right" ng-repeat="item in msg.notice.list track by item.arc_id" ui-sref="msg:detail({type:0,id:item.arc_id})">
+              <h2>{{::item.arc_title}}</h2>
+              <p>{{::item.arc_des}}&nbsp;</p>
+              <i class="icon ion-ios-arrow-right gray"></i>
+            </ion-item>
+          </ion-list>
+          <ion-infinite-scroll
+            ng-if="msg.notice.hasMoreData"
+            on-infinite="msg.notice.loadMore()"
+            distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+      <ion-slide-page>
+        <ion-scroll>
+          <ion-list>
+            <ion-item class="item-borderless item-icon-right" ng-repeat="item in msg.sys.list track by item.mess_id" ui-sref="msg:detail({type:1,id:item.mess_id})">
+              <h2>{{::item.mess_title}}</h2>
+              <p>{{::item.mess_content}}&nbsp;</p>
+              <i class="icon ion-ios-arrow-right gray"></i>
+            </ion-item>
+          </ion-list>
+          <ion-infinite-scroll
+            ng-if="msg.sys.hasMoreData"
+            on-infinite="msg.sys.loadMore()"
+            distance="1%">
+          </ion-infinite-scroll>
+        </ion-scroll>
+      </ion-slide-page>
+    </ion-slides>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,39 @@
+<ion-view view-title="累计收益" id="earnings">
+  <ion-content scroll="false">
+    <article class="donut-wrapper light-bg" ng-class="{small:earnings.showDetail}">
+      <donut data="earnings.info"></donut>
+     
+      <ion-list>
+        <ion-item class="item-borderless item-icon-right" ng-repeat="item in earnings.info.items track by $index" ng-click="earnings.toggle($index)" ng-hide="item.hide">
+          <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" class="no-padding">
+            <rect x="0" y="0" width="12" height="12" fill="{{item.color}}" />
+          </svg>
+          <span class="label">{{item.name}}（元）</span>
+          <span class="item-note assertive">{{item.amount|currency:''}}</span>
+          <i class="icon gray" ng-class="{'ion-android-arrow-dropdown':!earnings.showDetail,'ion-android-arrow-dropup':earnings.showDetail}"></i>
+        </ion-item>
+      </ion-list>
+
+      <ion-scroll direction="y" ng-if="earnings.showDetail">
+        <article class="detail-list">
+          <ion-list ng-repeat="(key, value) in earnings.detail track by $index">
+            <div class="item item-divider">{{key}}</div>
+            <div class="item" ng-repeat="r in value">
+              <span class="gray">{{r.op_time}}</span>
+              <span class="item-note assertive">{{r.amount}}</span>
+            </div>
+          </ion-list>
+          <ion-infinite-scroll
+            ng-if="earnings.hasMoreData"
+            on-infinite="earnings.loadMore()"
+            spinner="bubbles"
+            immediate-check="false" 
+            distance="1%">
+          </ion-infinite-scroll>
+        </article>
+      </ion-scroll>
+      
+
+    </article>
+  </ion-content>
+</ion-view>

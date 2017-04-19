@@ -1,0 +1,25 @@
+<ion-item class="margin-bottom item-borderless dbl-padding nono-product-item">
+  <div class="item item-icon-right item-borderless no-padding dbl-margin-bottom">
+    <h2 class="black">{{product.title}}<span class="energized small suffix" ng-if="product.suffix">{{product.suffix}}</span></h2>
+    <i class="ion-ios-arrow-right"></i>
+  </div>
+  <div class="row row-no-padding">
+    <div class="col col-40">
+      <div class="assertive font-18" ng-bind-html="product.rateShow"></div>
+      <p class="small gray dbl-margin-top">历史年化收益率</p>
+    </div>
+    <div class="col col-60 ">
+      <p class="padding-bottom black">期限&nbsp;{{product.expect}}{{product.expect_unit_show}}</p>
+      <nono-progress value="{{product.percent}}" shownumber="true" type="positive"></nono-progress>
+      <div class="row row-no-padding small margin-top ">
+        <div class="col">
+          <span ng-if="product.scope">起投{{product.price_min | number:0}}元</span>
+          <span ng-if="!product.scope">{{product.bp_acc_type}}</span>
+        </div>
+        <div class="text-right">
+          <span>剩余{{ product.balance}}元</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-item>

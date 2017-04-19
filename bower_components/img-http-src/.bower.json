@@ -1,0 +1,41 @@
+{
+  "name": "img-http-src",
+  "version": "0.2.5",
+  "description": "ng-src replacement",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "ng-src",
+    "http-src",
+    "placeholder"
+  ],
+  "main": [
+    "index.min.js"
+  ],
+  "bugs": "https://github.com/yanzhihong23/img-http-src/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yanzhihong23/img-http-src"
+  },
+  "author": {
+    "name": "Hom Yan",
+    "email": "yanzhihong23@qq.com"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "angular": ">=1.4.0"
+  },
+  "homepage": "https://github.com/yanzhihong23/img-http-src",
+  "_release": "0.2.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.5",
+    "commit": "075356b0a673e99ac4fc09c86929ec02bec7b84b"
+  },
+  "_source": "https://github.com/yanzhihong23/img-http-src.git",
+  "_target": "^0.2.0",
+  "_originalSource": "img-http-src"
+}

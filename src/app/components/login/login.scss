@@ -1,0 +1,70 @@
+#login_modal{
+  background: $positive;
+  // background: url($img-path + 'login/bg.png') no-repeat;
+  // background-size: cover;
+  $gray-light: rgba(255,255,255,.6);
+  input::-webkit-input-placeholder {
+    color: $gray-light;
+    font-size: 14px;
+  }
+  .icon.ion-android-close{
+    font-size: 30px;
+    color: $gray-light;
+    position: absolute;
+    top: 20px;
+    left: 9px;
+  }
+  .tip-wrapper{
+    padding: 0 10% 5%;
+    img{
+      display: block;
+      width: 100%;
+    }
+  }
+  .login-form{
+    padding: 20% 32px;
+    .item-input{
+      background: transparent;
+      padding: 10px 0;
+      margin: 0;
+      border-bottom: solid .5px $gray-light;
+      input{
+        color: $light;
+        font-size: 18px;
+      }
+      .button{
+        line-height: 32px;
+        min-height: 32px;
+        min-width: 72px;
+      }
+      .button-vcode{
+        font-size: 12px;
+        padding: 0 5px;
+      }
+    }
+
+    .input-label{
+      color: $light;
+      font-weight: 100;
+      max-width: 60px;
+      font-family: 'Hiragino Sans GB';
+      opacity: .6;
+    }
+
+    .item-icon-right .icon{
+      right: 0;
+    }
+
+    .button-block{
+      color: $positive;
+      margin-top: 20%;
+      font-size: 18px;
+    }
+
+    .img-code{
+      width: 72px;
+      height: 32px;
+      border-radius: $button-border-radius;
+    }
+  }
+}
